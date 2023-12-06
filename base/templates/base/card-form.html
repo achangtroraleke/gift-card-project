@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1>Create Gift Card Page</h1>
+<form method="POST">
+    {% csrf_token %}
+    {{form}}
+    <!-- <input required type="number" placeholder="Amount" name="amount"/>
+    <input required type="text" placeholder="First Name" name="f_name">
+    <input required type="text" placeholder="Last Name" name="l_name"> -->
+    <a href="{% url 'create-customer' %}">Create New Owner</a>
+    <input type="submit" value="Submit"/>
+</form>
+
+{% endblock %}

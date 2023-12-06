@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1> Home Page</h1>
+<a href="{% url 'create-card'%}">Create Gift Card.</a>
+{% for card in cards %}
+<h2>{{card.owner}}--Card #{{card.id}} Balance: ${{card.amount}}</h2>
+{% endfor %}
+
+{% endblock %}
