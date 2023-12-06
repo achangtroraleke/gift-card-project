@@ -12,7 +12,7 @@ class Customer(models.Model):
         return f'{self.f_name} {self.l_name} '
     
 class Card(models.Model):
-    amount = models.IntegerField(default=0)
+    amount = models.FloatField(default=0)
     updated = models.DateTimeField(auto_now=True)   
     created = models.DateTimeField(auto_now_add=True)
     owner = models.ForeignKey(Customer, related_name='gift_cards', on_delete=models.SET_NULL, null=True)
