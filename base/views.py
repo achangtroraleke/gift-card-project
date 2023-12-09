@@ -45,7 +45,7 @@ def purchagePage(request, pk):
     context = {'form':form, 'card':card}
     if request.method == "POST":
         form = PurchaseForm(request.POST)
-        obj_to_update = CardForm(request.POST, instance=card)
+        
         if form.is_valid():
             print(form.cleaned_data)
             new_val = form.cleaned_data['total']

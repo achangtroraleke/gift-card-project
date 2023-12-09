@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<h3>Balance: ${{card.amount}}</h3>
+<h3>Balance: ${{card.amount|floatformat:2}}</h3>
 <form method="POST">
     {% csrf_token %}
     {{form}}

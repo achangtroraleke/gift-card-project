@@ -4,7 +4,7 @@
 <div>
     <a href="{% url 'home' %}">Home</a>
     <h1>Gift Card #{{card.id}}</h1>
-    <h3>Amount: ${{card.amount}}</h3>
+    <h3>Amount: ${{card.amount|floatformat:2}}</h3>
     <h3>Owner: {{card.owner}}</h3>
     <a href="{% url 'purchase' card.id %}">Purchase</a>
 </div>

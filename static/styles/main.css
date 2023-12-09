@@ -1,0 +1,41 @@
+body{
+    margin: 0;
+    padding: 0px;
+    
+}
+
+#logo{
+    font-weight: 900;
+    font-size: 1px;
+}
+#navbar{
+    list-style: none;
+    position: sticky;
+    background-color: beige;
+    margin: 0;
+    justify-content:space-around;
+}
+.nav{
+    border: 1px black solid;
+}
+
+.nav-link{
+    text-decoration: none;
+}
+
+.container{
+    width:max(80%, 800px)
+}
+
+.center{
+    margin: auto;
+}
+
+.flex{
+    display: flex;
+}
+
+.flex-column{
+    display: flex;
+    flex-direction: column;
+}

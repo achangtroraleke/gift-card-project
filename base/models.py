@@ -16,5 +16,6 @@ class Card(models.Model):
     updated = models.DateTimeField(auto_now=True)   
     created = models.DateTimeField(auto_now_add=True)
     owner = models.ForeignKey(Customer, related_name='gift_cards', on_delete=models.SET_NULL, null=True)
+    # added active boolean
 
     
