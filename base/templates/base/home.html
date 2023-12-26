@@ -2,10 +2,43 @@
 {% block content %}
 
 
-<div>
-    {% for card in cards %}
-    <a href="{% url 'card-page' card.id %}"><h2>{{card.owner}} -- Gift Card #{{card.id}} Balance: ${{card.amount|floatformat:2 }}</h2></a>
-    {% endfor %}
+<div id="feed" class="flex-column center card">
+    <div class="content flex-column">
+        <h1 class="no-margin text-center">Active Gift Cards</h1>
+
+        <form id="search-form" class="search flex" method="POST" action="{% url 'home'%}">
+            <label for="active-checkbox">Hide Inactive</label>
+            <input id="active-checkbox" type="checkbox" name="is_active" value=True>
+            {% csrf_token %}
+            <input id="search" type="text" placeholder="Search" name="q" />
+            <input id="search-button" class="" type="submit" value="Enter">
+        </form>
+        <table id="data-table">
+            <tr>
+                <th>Card Number</th>
+                <th>Name</th>
+                <th>Original Balance</th>
+                <th>Current Balance</th>
+                <th>Date of Purchase</th>
+                <th>Status</th>
+            </tr>
+            {% for card in cards %}
+            <tr id="data-row">
+                <td><a href="{% url 'card-page' card.id %}">#{{card.id}}</a></td>
+                <td><a href="{% url 'customer-page' card.customer.id %}">{{card.customer}}</a></td>
+                <td>${{card.original_balance | floatformat:2}}</td>
+                <td>${{card.balance | floatformat:2}}</td>
+                <td>{{card.created |date:"M d, Y"}}</td>
+                {% if card.is_active %}
+                <td class="green-font">Active</td>
+                {% else %}
+                <td class="red-font">Inactive</td> 
+                {% endif %}
+            </tr>
+        {% endfor %}
+        </table>
+    </div>
+    
 </div>
 
 

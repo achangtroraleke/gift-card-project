@@ -1,12 +1,31 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<h3>Balance: ${{card.amount|floatformat:2}}</h3>
-<form method="POST">
-    {% csrf_token %}
-    {{form}}
-   
-    <input type="submit" value="Purchase">
-</form>
+<div class="flex-column card center">
+    <div class="content">
+        {% if refund %}
+        <h1>Issue a refund</h1>
+        {% else %}
+        <h1>Make a purchase</h1>
+        {% endif %}
+        <h2 class="no-margin">Card #{{card.id}}</h2>
+        <h3>Balance: ${{card.balance|floatformat:2}}</h3>
+        <form method="POST" class="flex-column flex-group">
+            {% if messages %}
+            <ul class="messages">
+                {% for message in messages %}
+                <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+            {% csrf_token %}
+            <input type="hidden" name="balance" value="{{card.balance}}">
+            {{form}}
+            
+            <input type="submit" value="Confirm" class="button">
+        </form>
+    </div>
+</div>
+
 
 {% endblock %}

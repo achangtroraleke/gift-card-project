@@ -1,15 +1,22 @@
-<ul id="navbar" class="flex">
 
-    <a href="/" class="nav-link">
-        <li id="logo" class="nav">
-            <h1 >HOME</h1>
-        </li>
-    </a>
-   
-    <a href="{% url 'create-card'%}" class="nav-link">
-        <li class="nav">
-            <h1 >Create Cards</h1>
-        </li>
-    </a>
+<div id="navbar">
+
+
+<ul id="nav" class="flex center">
+    <li id="logo" class="">
+        <a href="/" class="nav-link">
+            <h1>[Logo]</h1>
+        </a>  
+    </li>
+
+    <li id="nav-group" class="flex">
+        <a href="{% url 'create-card'%}" class="nav-link">
+                <h1>[Create Cards]</h1>
+        </a>
+        <a href="{% url 'create-customer'%}" class="nav-link">
+            <h1>[New Customer]</h1>
+        </a>
+    </li> 
    
 </ul>
+</div>

@@ -8,13 +8,17 @@
     <link rel="stylesheet" href="{% static 'styles/main.css' %}">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Oswald&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
     <title>Gift Cards</title>
 </head>
 <body class="center">
     {% include 'navbar.html' %}
-    {% block content %}
+    <div class="container center flex-column top-padding">
+        
+        {% block content %}
 
-    {% endblock %}
+        {% endblock %}
+    </div>
+    
 </body>
 </html>
