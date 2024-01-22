@@ -15,6 +15,7 @@ import os
 from dotenv import load_dotenv
 load_dotenv()
 MY_SECRET_EMAIL_KEY = os.getenv("SECRET_EMAIL_KEY")
+MY_SECRET_DATABASE_KEY = os.getenv("SECRET_DATABASE_CONFIG")
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -83,12 +84,7 @@ WSGI_APPLICATION = 'gift_cards.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
-}
+DATABASES = MY_SECRET_DATABASE_KEY
 
 
 # Password validation
