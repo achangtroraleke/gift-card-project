@@ -58,7 +58,7 @@ def createCardPage(request, pk):
             sel_business.gc_total_bal += form.cleaned_data['balance']
             sel_business.save()
             return redirect(f'/gift-card/{new_card.id}')
-    context={'form':form}
+    context={'form':form, 'business':sel_business}
     return render(request, 'base/card-form.html', context)
 
 

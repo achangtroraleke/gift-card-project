@@ -1,10 +1,9 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<div class="card container center">
-    <div class="content">
+<div class="card container  flex-column">
+    <div class="content flex-column center">
         <h1>Your Dashboard</h1>
-        <hr>
         <div class="flex flex-group">
             <a href="{% url 'new-business' %}" class="">
                 <button class="button">Create New Business</button>
@@ -13,8 +12,9 @@
                 <button class="button">Register New Customer</button>
             </a>
         </div>
-        
+        <h3>Your Businesses</h3>
         <div class="dash-content flex">
+            
             {% for business in businesses %}
             <a class="business-link" href="{% url 'get-business-cards' business.id %}">
                 <div class="card thumbnail">

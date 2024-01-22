@@ -10,7 +10,7 @@
         {% endif %}
         <h2 class="no-margin">Card #{{card.id}}</h2>
         <h3>Balance: ${{card.balance|floatformat:2}}</h3>
-        <form method="POST" class="flex-column flex-group">
+        <form method="POST" class="flex-column flex-group half-width">
             {% if messages %}
             <ul class="messages">
                 {% for message in messages %}

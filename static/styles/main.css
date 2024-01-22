@@ -113,7 +113,7 @@ form label{
 
 
 .container {
-  width: min(80%, 1000px);
+  width: min(90%, 1000px);
 }
 
 .center {
@@ -193,6 +193,7 @@ form label{
 
 .half-width{
   width: 50%;
+  min-width: fit-content;
 }
 
 
@@ -223,7 +224,7 @@ input{
 }
 
 .thumbnail{
-  height: 15rem;
+  max-height: 15rem;
   width: 10rem;
 }
 
