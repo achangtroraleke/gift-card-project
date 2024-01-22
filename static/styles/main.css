@@ -56,11 +56,13 @@ form *{
 }
 #nav-group{
   gap: 1rem;
+  align-items: baseline;
 }
 
 #search-form{
   align-items: center;
   justify-content: space-between;
+  width: 100%;
 }
 
 #search {
@@ -109,8 +111,9 @@ form label{
   color: lightgray;
 }
 
+
 .container {
-  width: max(80%, 600px);
+  width: min(80%, 1000px);
 }
 
 .center {
@@ -152,6 +155,7 @@ form label{
 
 .flex-group {
   gap: 1rem;
+  
 }
 
 .card{
@@ -160,8 +164,8 @@ form label{
 }
 .content{
   margin: 1rem;
-  gap: 1rem;
-  min-width:400px;
+  
+
 }
 
 .top-padding{
@@ -179,4 +183,63 @@ form label{
 .messages li{
   color: var(--inactive-color);
   font-style: italic;
+}
+
+#logoutBtn{
+  background: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.half-width{
+  width: 50%;
+}
+
+
+form div
+{
+  width: 100%;
+  justify-content: space-between;
+}
+
+input{
+  width: 100%;
+}
+
+.dash-content{
+ 
+  gap: 1rem;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+#business-img{
+  width: 5rem;
+  max-width: 5rem;
+}
+#business-card{
+  align-items: center;
+  height: 100%;
+}
+
+.thumbnail{
+  height: 15rem;
+  width: 10rem;
+}
+
+.std-gap{
+  gap: 1rem;
+}
+#image-container{
+  position: relative;
+  max-width: 50%;
+}
+.logo-img{
+  position: relative;
+  border-radius: 50%;
+  aspect-ratio: 1/1;
+  width: 50%;
+}
+.center{
+  align-items: center;
 }

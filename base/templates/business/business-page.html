@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="card container center">
+    <div class="content">
+        <h1>Edit {{business.name}}</h1>
+        <hr>
+        <form method="POST" class="flex-column flex-group std-gap" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{form}}
+            <input type="submit" value="Save Edit" class="button">
+        </form>
+    </div>
+
+</div>
+
+{% endblock %}

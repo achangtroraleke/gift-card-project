@@ -5,18 +5,34 @@
 <ul id="nav" class="flex center">
     <li id="logo" class="">
         <a href="/" class="nav-link">
-            <h1>[Logo]</h1>
+            <h1>COMS</h1>
         </a>  
     </li>
 
+ 
+    {% if user.is_authenticated %}
+ 
+    
     <li id="nav-group" class="flex">
-        <a href="{% url 'create-card'%}" class="nav-link">
-                <h1>[Create Cards]</h1>
+        <a href="{% url 'dashboard'%}" class="nav-link">
+            <h3>My Businesses</h3>
         </a>
-        <a href="{% url 'create-customer'%}" class="nav-link">
-            <h1>[New Customer]</h1>
+        <a href="{% url 'profile' %}" class="nav-link"><h3 >{{user.username}}</h3></a>
+        
+        <form id="logout-form" action="/logout/" method="POST" class="">
+            {% csrf_token %}
+            <button id="logoutBtn" class="nav-link" type="submit" value="Logout"><h3>Logout</h3></button>
+        </form>
+    </li>
+    {% else %}
+    <li id="nav-group" class="flex">
+        <a href="{% url 'login'%}" class="nav-link">
+            <h3>[Login]</h3>
+        </a>
+        <a href="{% url 'register'%}" class="nav-link">
+            <h3>[Sign Up]</h3>
         </a>
     </li> 
-   
+    {% endif %}
 </ul>
 </div>

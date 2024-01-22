@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="card container center">
+    <div class="content">
+        <h1>Your Dashboard</h1>
+        <hr>
+        <div class="flex flex-group">
+            <a href="{% url 'new-business' %}" class="">
+                <button class="button">Create New Business</button>
+            </a>
+            <a href="{% url 'create-customer'%}" class="">
+                <button class="button">Register New Customer</button>
+            </a>
+        </div>
+        
+        <div class="dash-content flex">
+            {% for business in businesses %}
+            <a class="business-link" href="{% url 'get-business-cards' business.id %}">
+                <div class="card thumbnail">
+                    <div id="business-card" class="content flex-column">
+                        <h5>Business Name: {{business}}</h5>
+                        <img id="business-img" src="{{business.bus_img.url}}" alt="business-logo">
+                        <h5>Outstanding Gift Cards: ${{business.gc_total_bal | floatformat:2}}</h5>
+                     
+                    </div>
+                </div>
+            </a>            
+            {% endfor %}
+        </div>
+        
+    </div>
+</div>
+
+{% endblock %}

@@ -3,7 +3,7 @@
 {% block content %}
 <div class="card container center">
     <div class="content">
-        <h1>Gift Card #{{card.id}}</h1>
+        <h1>Gift Card #{{card.card_num}}</h1>
         <h3>Original Balance: ${{card.original_balance|floatformat:2}}</h3>
         <h3>Balance: ${{card.balance|floatformat:2}}</h3>
         <h3>Customer: <a href="{% url 'customer-page' card.customer.id %}"><span>{{card.customer}}</span></a></h3>
