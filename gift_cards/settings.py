@@ -15,7 +15,8 @@ import os
 from dotenv import load_dotenv
 load_dotenv()
 MY_SECRET_EMAIL_KEY = os.getenv("SECRET_EMAIL_KEY")
-MY_SECRET_DATABASE_KEY = os.getenv("SECRET_DATABASE_CONFIG")
+MY_SECRET_DB_USERNAME_KEY = os.getenv("SECRET_DATABASE_USERNAME")
+MY_SECRET_DB_PW_KEY = os.getenv("SECRET_DB_PW")
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -84,7 +85,17 @@ WSGI_APPLICATION = 'gift_cards.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
-DATABASES = MY_SECRET_DATABASE_KEY
+DATABASES =  {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME':MY_SECRET_DB_USERNAME_KEY,
+        'USER':MY_SECRET_DB_USERNAME_KEY,
+        'PASSWORD':MY_SECRET_DB_PW_KEY,
+        'HOST':'heffalump.db.elephantsql.com',
+        'PORT':'5432'
+
+    }
+}
 
 
 # Password validation
