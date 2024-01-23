@@ -16,9 +16,11 @@ body {
 table, th, td {
   border:1px solid black;
   text-align: center;
+  font-size: min(1.5dvw, 12px);
+
 }
 #data-row td{
-  font-size: min(1.5dvw, 12px);
+  
   padding: 1rem;
 }
 
@@ -169,8 +171,7 @@ form label{
 }
 .content{
   margin: 1rem;
-  
-
+  width: 100%;
 }
 
 .top-padding{
