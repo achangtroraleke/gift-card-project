@@ -106,13 +106,13 @@ form label{
 .nav-link {
   text-decoration: none;
   color: white;
+  font-size: 24px;
 }
 .nav-link:hover {
   color: lightgray;
 }
 
-.nav-link a h3,
-.nav-ling button{
+.nav-link a h3{
   font-size: 24px;
 }
 
