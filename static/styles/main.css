@@ -111,6 +111,11 @@ form label{
   color: lightgray;
 }
 
+.nav-link a h3,
+.nav-ling button{
+  font-size: 24px;
+}
+
 
 .container {
   width: min(90%, 1000px);
