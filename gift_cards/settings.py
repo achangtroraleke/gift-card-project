@@ -29,9 +29,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-n$1c8f1u#)%$+h5b_by4+hs%vxodu_2guuw)+lx+0%o9)7+8*_'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
-ALLOWED_HOSTS = ['gift-card-service.onrender.com']
+ALLOWED_HOSTS = ['gift-card-service.onrender.com', '127.0.0.1']
 
 
 # Application definition
@@ -147,6 +147,7 @@ MEDIA_URL = '/media/'
 if not DEBUG:    # Tell Django to copy statics to the `staticfiles` directory
     # in your application directory on Render.
     STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+    MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
     # Turn on WhiteNoise storage backend that takes care of compressing static files
     # and creating unique names for each version so they can safely be cached forever.
     STATICFILES_STORAGE = 'whitenoise.storage.CompressedStaticFilesStorage'
