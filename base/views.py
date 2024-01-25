@@ -6,14 +6,11 @@ from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 
-
-# Create your views here.
-
 def home(request):
     if request.user.is_authenticated:
         return redirect('dashboard')
     else:
-        return redirect('login')
+        return render(request, 'base/home.html')
 
 """Card Views"""
 @login_required(login_url='/login')
@@ -31,14 +28,11 @@ def getAllCards(request, pk):
             )
         if hide_inactive:
             cards = cards.filter(is_active=hide_inactive)
-    
         context = {'cards': cards, 'business':sel_business}
-        return render(request, 'base/home.html', context = context)
-        
+        return render(request, 'base/table.html', context = context)
     cards = Card.objects.filter(business=sel_business)
-
     context = {'cards': cards, 'business':sel_business} 
-    return render(request, 'base/home.html', context= context)
+    return render(request, 'base/table.html', context= context)
     
 
 
@@ -64,25 +58,20 @@ def createCardPage(request, pk):
 
 @login_required(login_url='/')
 def cardPage(request, pk):
-    
     card = get_object_or_404(Card, id=pk)
     form = CardForm(instance=card)
     transactions = Transaction.objects.filter(gift_card = card,).order_by("created")
-    
     context = {'form':form, 'card':card,'transactions': transactions}
-
     return render(request, 'base/card.html', context)
 
 @login_required(login_url='/')
 def purchasePage(request, pk):
     card = get_object_or_404(Card, id=pk)
     form = TransactionForm()
-    
     if request.method == "POST":
         form = TransactionForm(request.POST)
         if float(form.data['total']) <= card.balance:
             if form.is_valid():
-
                 new_val = form.cleaned_data['total']
                 if card.affordable(new_val):
                     new_transaction = Transaction(amount=new_val, gift_card=card, trans_type="purchase")
@@ -91,8 +80,7 @@ def purchasePage(request, pk):
                     new_transaction.send_receipt()
                 return redirect(f'/gift-card/{pk}/')
         else:
-            messages.error(request, f'Not enough funds.')
-          
+            messages.error(request, f'Not enough funds.')      
     context = {'form':form, 'card':card}
     return render(request, 'base/purchase.html', context)
 
@@ -100,7 +88,6 @@ def purchasePage(request, pk):
 def refundPage(request, pk):
     card = get_object_or_404(Card, id=pk)
     form = TransactionForm()
-    
     if request.method == "POST":
         form = TransactionForm(request.POST)
         if float(form.data['total']) <= card.original_balance - card.balance:
@@ -115,7 +102,6 @@ def refundPage(request, pk):
                 return redirect(f'/gift-card/{pk}/')
         else:
             messages.error(request, f'Cannot refund more than original balance (${round(card.original_balance, 2)}).')
-          
     context = {'form':form, 'card':card, 'refund':True}
     return render(request, 'base/purchase.html', context)
 
@@ -151,7 +137,6 @@ def register(request):
             user = form.save(commit=False)
             user.username = user.username.lower()
             user.save()
-    
             return redirect('/')
 
     context = {'form': form}
@@ -159,7 +144,6 @@ def register(request):
 
 def loginPage(request):
     form = UserLoginForm()
-    
     if request.method == 'POST':
         form = UserLoginForm(request.POST)
         email = form.data['email']
@@ -170,7 +154,6 @@ def loginPage(request):
             return redirect('dashboard')
         else:
             messages.error(request, 'Incorrect e-mail or password.')
-    
     context ={'form':form}
     return render(request, 'user/login.html', context)
 
@@ -200,7 +183,6 @@ def profileEditPage(request):
         if form.is_valid():
             form.save()
             return redirect('profile')
-    
     context = {'edit':edit, 'form':form}
     return render( request,  'user/profile.html', context)
     
@@ -217,13 +199,11 @@ def createBusinessPage(request):
             new_business.owner = request.user
             new_business.save()
             return redirect('/user/dashboard')
-    
     context = {'form': form}
     return render(request, 'business/new_business.html', context)
 
 @login_required(login_url='/')
 def businessPage(request):
-
     user_businesses = Business.objects.filter(owner = request.user)
     context = {'businesses':user_businesses}
     return render(request, 'business/dashboard-page.html', context)
@@ -231,16 +211,15 @@ def businessPage(request):
 @login_required(login_url=('/'))
 def editBusinessPage(request, pk):
     sel_business = Business.objects.get(id=pk)
-
     form = NewBusinessForm(instance=sel_business)
-    
     if request.method == 'POST':
         form = NewBusinessForm(request.POST,request.FILES, instance = sel_business)
         if form.is_valid():
             edit_business = form.save(commit=False)
+            new_img=form.cleaned_data['business_image']
+            edit_business.bus_img = new_img
             edit_business.owner = request.user
             edit_business.save()
             return redirect('get-business-cards', pk=sel_business.id)
-    
     context = {'form': form}
     return render(request, 'business/business-page.html', context)

@@ -29,7 +29,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-n$1c8f1u#)%$+h5b_by4+hs%vxodu_2guuw)+lx+0%o9)7+8*_'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['gift-card-service.onrender.com', '127.0.0.1']
 
@@ -88,7 +88,11 @@ WSGI_APPLICATION = 'gift_cards.wsgi.application'
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
 DATABASES =  {
-    'default': {
+    'dev':{
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
+    },
+    'production': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME':MY_SECRET_DB_USERNAME_KEY,
         'USER':MY_SECRET_DB_USERNAME_KEY,
@@ -99,6 +103,7 @@ DATABASES =  {
     }
 }
 
+DATABASES['default'] = DATABASES['dev' if DEBUG else 'production']
 
 # Password validation
 # https://docs.djangoproject.com/en/5.0/ref/settings/#auth-password-validators

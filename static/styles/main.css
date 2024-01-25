@@ -51,7 +51,7 @@ form *{
 #nav {
   list-style: none;
   width: 90%;
-  gap: 1rem;
+
   align-items: center;
   font-size: 12px;
   justify-content: space-between;
@@ -167,6 +167,7 @@ form label{
 
 .card{
     box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
+    background: transparent;
     
 }
 .content{
@@ -249,4 +250,19 @@ input{
 }
 .center{
   align-items: center;
+}
+
+#intro-text{
+  font-size: 36px;
+  font-weight: 500;
+}
+
+
+
+#landing-card{
+  background-image: url('/static/media/landing-img.png');
+  background-repeat: no-repeat;
+  background-size:30%;
+  background-position: center  right;
+  position: relative;
 }

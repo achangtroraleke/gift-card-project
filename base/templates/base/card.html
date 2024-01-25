@@ -1,39 +1,40 @@
-{% extends 'base.html' %}
-
-{% block content %}
+{% extends 'base.html' %} {% block content %}
 <div class="card container center">
-    <div class="content">
-        <h1>Gift Card #{{card.card_num}}</h1>
-        <h3>Original Balance: ${{card.original_balance|floatformat:2}}</h3>
-        <h3>Balance: ${{card.balance|floatformat:2}}</h3>
-        <h3>Customer: <a href="{% url 'customer-page' card.customer.id %}"><span>{{card.customer}}</span></a></h3>
-        {% if card.is_active %}
-        <a href="{% url 'purchase' card.id %}" class="button">Make Purchase</a>
+  <div class="content">
+    <h1>Gift Card #{{card.card_num}}</h1>
+    <h3>Original Balance: ${{card.original_balance|floatformat:2}}</h3>
+    <h3>Balance: ${{card.balance|floatformat:2}}</h3>
+    <h3>
+      Customer:
+      <a href="{% url 'customer-page' card.customer.id %}"
+        ><span>{{card.customer}}</span></a
+      >
+    </h3>
+    {% if card.is_active %}
+    <a href="{% url 'purchase' card.id %}" class="button">Make Purchase</a>
+    {% endif %}
+    <a href="{% url 'refund' card.id %}" class="button">Refund</a>
+    <h3>Transactions</h3>
+    <table id="data-table">
+      <tr>
+        <th>Transaction ID#</th>
+        <th>Amount</th>
+        <th>Type</th>
+        <th>Date of Purchase</th>
+      </tr>
+      {% for transaction in transactions %}
+      <tr id="data-row">
+        <td>#{{transaction.id}}</td>
+        {% if transaction.trans_type == 'refund' %}
+        <td>(${{transaction.amount | floatformat:2}})</td>
+        {% else %}
+        <td>${{transaction.amount | floatformat:2}}</td>
         {% endif %}
-        <a href="{% url 'refund' card.id %}" class="button">Refund</a>
-        <h3>Transactions</h3>
-        <table id="data-table">
-            <tr>
-                <th>Transaction ID#</th>
-                <th>Amount</th>
-                <th>Type</th>
-                <th>Date of Purchase</th>
-            </tr>
-            {% for transaction in transactions %}
-            <tr id="data-row">
-                <td>#{{transaction.id}}</td>
-                {% if transaction.trans_type == 'refund' %}
-                <td>(${{transaction.amount | floatformat:2}})</td>
-                {% else %}
-                <td>${{transaction.amount | floatformat:2}}</td>
-                {% endif %}
-                <td>{{transaction.trans_type}}</td>
-                <td>{{transaction.created}}</td>
-            </tr>
-            {% endfor %}
-        </table>
-    </div>
-
-    
+        <td>{{transaction.trans_type}}</td>
+        <td>{{transaction.created}}</td>
+      </tr>
+      {% endfor %}
+    </table>
+  </div>
 </div>
 {% endblock %}

@@ -1,21 +1,18 @@
-{% extends 'base.html' %}
-{% block content %}
+{% extends 'base.html' %} {% block content %}
 <div class="center container card half-width">
-    <div class="content ">
+  <div class="content">
     <h1>Create Gift Card Page</h1>
-    <form method="POST" class="flex-column flex-group ">
-        {% csrf_token %}
-        {{form}}
-        <!-- <input required type="number" placeholder="Amount" name="amount"/>
-        <input required type="text" placeholder="First Name" name="f_name">
-        <input required type="text" placeholder="Last Name" name="l_name"> -->
-        <div class="flex flex-group">
-            <a href="{% url 'create-customer' %}" class="button">New Customer</a>
-            <input type="submit" value="Create Card" class="button">
-            <a href="{% url 'get-business-cards' business.id%}" class="button">Cancel</a>
-        </div>
-        
+    <form method="POST" class="flex-column flex-group">
+      {% csrf_token %} {{form}}
+
+      <div class="flex flex-group">
+        <a href="{% url 'create-customer' %}" class="button">New Customer</a>
+        <input type="submit" value="Create Card" class="button" />
+        <a href="{% url 'get-business-cards' business.id%}" class="button"
+          >Cancel</a
+        >
+      </div>
     </form>
-    </div>
+  </div>
 </div>
 {% endblock %}

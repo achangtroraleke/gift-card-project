@@ -1,34 +1,30 @@
-{% extends 'base.html' %}
-
-{% block content %}
+{% extends 'base.html' %} {% block content %}
 <div class="container center card">
-    <div class="content">
+  <div class="content">
     <h1>Customer Profile</h1>
     <h3>{{customer}}</h3>
     <table id="data-table">
-        <tr>
-            <th>Card ID#</th>
-          
-            <th>Original Balance</th>
-            <th>Current Balance</th>
-            <th>Date of Purchase</th>
-            <th>Status</th>
-        </tr>
-        {% for card in cards %}
-        <tr id="data-row">
-            <td><a href="{% url 'card-page' card.id %}">#{{card.id}}</a></td>
-            <td>${{card.original_balance | floatformat:2}}</td>
-            <td>${{card.balance | floatformat:2}}</td>
-            <td>{{card.created |date:"M d, Y"}}</td>
-            {% if card.is_active %}
-            <td class="green-font">Active</td>
-            {% else %}
-            <td class="red-font">Inactive</td> 
-            {% endif %}
-        </tr>
-    {% endfor %}
+      <tr>
+        <th>Card ID#</th>
+        <th>Original Balance</th>
+        <th>Current Balance</th>
+        <th>Date of Purchase</th>
+        <th>Status</th>
+      </tr>
+      {% for card in cards %}
+      <tr id="data-row">
+        <td><a href="{% url 'card-page' card.id %}">#{{card.id}}</a></td>
+        <td>${{card.original_balance | floatformat:2}}</td>
+        <td>${{card.balance | floatformat:2}}</td>
+        <td>{{card.created |date:"M d, Y"}}</td>
+        {% if card.is_active %}
+        <td class="green-font">Active</td>
+        {% else %}
+        <td class="red-font">Inactive</td>
+        {% endif %}
+      </tr>
+      {% endfor %}
     </table>
-    </div>
-
+  </div>
 </div>
 {% endblock %}

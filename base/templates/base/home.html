@@ -1,54 +1,25 @@
 {% extends 'base.html' %}
 {% block content %}
+<div   class="container card">
+    <div id="landing-card" class="content flex-column std-gap">
+        <p id="intro-text">
+            The Client Management
+            <br>
+            Platform
+            <br>
+            to grow your business
+        </p>
+        <p id="subtext">
+            The Client Credit Management System assists growing
+            <br>
+             businesses to understand their customers.
+        </p>
+        <div class="flex flex-group std-gap">
+            <a href="{% url 'register' %}" class="button">Sign Up</a>
+            <a href="{% url 'login' %}" class="button">Sign Up</a>
 
-
-<div id="feed" class="flex-column center card">
-    <div class="content flex-column std-gap center">
-        <div id="image-container">
-            <img class="logo-img" src="{{business.bus_img.url}}"/>
         </div>
-        
-        <h1 class="no-margin text-center">Active Gift Cards: {{business}}</h1>
-        
-        <div class="flex std-gap">
-        <a href="{% url 'create-card' business.id %}"><button id="create-card" class="button">Create Card</button></a>
-        <a href="{% url 'edit-business' business.id %}" class="button">Edit Business Info</a>
-        </div>
-        <form id="search-form" class="search flex" method="POST" action="{% url 'get-business-cards' business.id%}">
-            <label for="active-checkbox">Hide Inactive</label>
-            <input id="active-checkbox" type="checkbox" name="is_active" value=True>
-            {% csrf_token %}
-            <input id="search" type="text" placeholder="Search" name="q" />
-            <input id="search-button" class="" type="submit" value="Enter">
-        </form>
-
-        <table id="data-table">
-            <tr>
-                <th>Card Number</th>
-                <th>Name</th>
-                <th>Original Balance</th>
-                <th>Current Balance</th>
-                <th>Date of Purchase</th>
-                <th>Status</th>
-            </tr>
-            {% for card in cards %}
-            <tr id="data-row">
-                <td><a href="{% url 'card-page' card.id %}">#{{card.card_num}}</a></td>
-                <td><a href="{% url 'customer-page' card.customer.id %}">{{card.customer}}</a></td>
-                <td>${{card.original_balance | floatformat:2}}</td>
-                <td>${{card.balance | floatformat:2}}</td>
-                <td>{{card.created |date:"M d, Y"}}</td>
-                {% if card.is_active %}
-                <td class="green-font">Active</td>
-                {% else %}
-                <td class="red-font">Inactive</td> 
-                {% endif %}
-            </tr>
-            {% endfor %}
-        </table>
+     
     </div>
-    
 </div>
-
-
 {% endblock %}

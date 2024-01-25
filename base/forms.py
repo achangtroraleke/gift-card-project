@@ -54,6 +54,7 @@ class EditUserForm(ModelForm):
 
 
 class NewBusinessForm(ModelForm):
+    business_image = forms.ImageField()
     class Meta:
         model = Business
-        fields = ['name', 'bus_img']
+        fields = ['name']
