@@ -1,7 +1,7 @@
-:root{
-  --main-color:#4e9caf;
-  --active-color:#04AA6D;
-  --inactive-color:#f44336;
+:root {
+  --main-color: #4e9caf;
+  --active-color: #04aa6d;
+  --inactive-color: #f44336;
 }
 
 * {
@@ -13,19 +13,18 @@ body {
   font-family: "Montserrat", sans-serif;
 }
 
-table, th, td {
-  border:1px solid black;
+table,
+th,
+td {
+  border: 1px solid black;
   text-align: center;
   font-size: min(1.5dvw, 12px);
-
 }
-#data-row td{
-  
+#data-row td {
   padding: 1rem;
 }
 
-
-#data-table{
+#data-table {
   width: 100%;
 }
 
@@ -38,8 +37,8 @@ ul {
   font-weight: 900;
 }
 
-form *{
-    width: fit-content;
+form * {
+  width: fit-content;
 }
 
 #navbar {
@@ -56,12 +55,12 @@ form *{
   font-size: 12px;
   justify-content: space-between;
 }
-#nav-group{
+#nav-group {
   gap: 1rem;
   align-items: baseline;
 }
 
-#search-form{
+#search-form {
   align-items: center;
   justify-content: space-between;
   width: 100%;
@@ -75,7 +74,7 @@ form *{
   width: 100%;
   background: #f1f1f1;
 }
-#search-button{
+#search-button {
   float: left;
   width: 20%;
   padding: 10px;
@@ -86,16 +85,16 @@ form *{
   border-left: none; /* Prevent double borders */
   cursor: pointer;
 }
-#search-button:hover{
+#search-button:hover {
   background-color: white;
   color: var(--main-color);
   cursor: pointer;
 }
 
-#active-checkbox{
+#active-checkbox {
   width: 2.5%;
 }
-form label{
+form label {
   font-size: 12px;
 }
 
@@ -108,16 +107,14 @@ form label{
 .nav-link {
   text-decoration: none;
   color: white;
-
 }
 .nav-link:hover {
   color: lightgray;
 }
 
-.nav-link a h3{
+.nav-link a h3 {
   font-size: 24px;
 }
-
 
 .container {
   width: min(90%, 1000px);
@@ -140,14 +137,13 @@ form label{
 }
 
 .button {
-
   background: #4e9caf;
   padding: 10px;
   text-align: center;
   border-radius: 5px;
   color: white;
   font-weight: bold;
-  font-size: 16px;
+  font-size: min(16px, 2.5dvw);
   line-height: 25px;
   text-decoration: none;
   border: none;
@@ -162,107 +158,100 @@ form label{
 
 .flex-group {
   gap: 1rem;
-  
 }
 
-.card{
-    box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
-    background: transparent;
-    
+.card {
+  box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
+  background: transparent;
 }
-.content{
+.content {
   margin: 1rem;
-
 }
 
-.top-padding{
-    padding-top: 2.5rem;
+.top-padding {
+  padding-top: 2.5rem;
 }
 
-.red-font{
+.red-font {
   color: var(--inactive-color);
 }
 
-.green-font{
-  color:var(--active-color)
+.green-font,
+.success {
+  color: var(--active-color);
+  font-style: italic;
 }
 .errorlist li,
-.messages li{
+.error{
   color: var(--inactive-color);
   font-style: italic;
 }
 
-#logoutBtn{
+#logoutBtn {
   background: transparent;
   border: none;
   cursor: pointer;
- 
 }
 
-.half-width{
+.half-width {
   width: 50%;
   min-width: fit-content;
 }
 
-
-form div
-{
-  width: 100%;
-  justify-content: space-between;
-}
-
-input{
+form div {
   width: 100%;
 }
 
-.dash-content{
+input {
+  width: 100%;
+}
+
+.dash-content {
   gap: 1rem;
   flex-wrap: wrap;
   align-items: center;
 }
 
-#business-img{
+#business-img {
   width: 5rem;
   max-width: 5rem;
 }
-#business-card{
+#business-card {
   align-items: center;
   height: 100%;
 }
 
-.thumbnail{
+.thumbnail {
   max-height: 15rem;
   width: 10rem;
 }
 
-.std-gap{
+.std-gap {
   gap: 1rem;
 }
-#image-container{
+#image-container {
   position: relative;
   max-width: 50%;
 }
-.logo-img{
+.logo-img {
   position: relative;
   border-radius: 50%;
   aspect-ratio: 1/1;
   width: 50%;
 }
-.center{
+.center {
   align-items: center;
 }
 
-#intro-text{
+#intro-text {
   font-size: 36px;
   font-weight: 500;
 }
 
-
-
-#landing-card{
-  background-image: url('/static/media/landing-img.png');
+#landing-card {
+  background-image: url("/static/media/landing-img.png");
   background-repeat: no-repeat;
-  background-size:30%;
-  background-position: center  right;
+  background-size: 30%;
+  background-position: center right;
   position: relative;
 }

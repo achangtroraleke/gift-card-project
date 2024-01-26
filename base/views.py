@@ -53,7 +53,7 @@ def createCardPage(request, pk):
             sel_business.save()
             return redirect(f'/gift-card/{new_card.id}')
     context={'form':form, 'business':sel_business}
-    return render(request, 'base/card-form.html', context)
+    return render(request, 'card/card-form.html', context)
 
 
 @login_required(login_url='/')
@@ -62,7 +62,7 @@ def cardPage(request, pk):
     form = CardForm(instance=card)
     transactions = Transaction.objects.filter(gift_card = card,).order_by("created")
     context = {'form':form, 'card':card,'transactions': transactions}
-    return render(request, 'base/card.html', context)
+    return render(request, 'card/card.html', context)
 
 @login_required(login_url='/')
 def purchasePage(request, pk):
@@ -77,12 +77,12 @@ def purchasePage(request, pk):
                     new_transaction = Transaction(amount=new_val, gift_card=card, trans_type="purchase")
                     new_transaction.save()
                     card.save()
-                    new_transaction.send_receipt()
-                return redirect(f'/gift-card/{pk}/')
+                    messages.success(request, 'Purchase Successful!')
+                    
         else:
             messages.error(request, f'Not enough funds.')      
     context = {'form':form, 'card':card}
-    return render(request, 'base/purchase.html', context)
+    return render(request, 'card/purchase.html', context)
 
 @login_required(login_url='/')
 def refundPage(request, pk):
@@ -98,12 +98,13 @@ def refundPage(request, pk):
                 new_transaction = Transaction(amount = amt, gift_card=card, trans_type="refund")
                 card.save()
                 new_transaction.save()
-                new_transaction.send_receipt()
+              
                 return redirect(f'/gift-card/{pk}/')
         else:
-            messages.error(request, f'Cannot refund more than original balance (${round(card.original_balance, 2)}).')
+            formatted_balance = card.format_to_money(card.original_balance)
+            messages.error(request, f'Cannot refund more than original balance (${formatted_balance}).')
     context = {'form':form, 'card':card, 'refund':True}
-    return render(request, 'base/purchase.html', context)
+    return render(request, 'card/purchase.html', context)
 
 """ Customer Views """
 @login_required(login_url='/')
@@ -117,7 +118,7 @@ def createCustomer(request):
             new_customer.save()
             return redirect('/')
     context ={'form':form}
-    return render(request, 'base/customer-form.html', context)
+    return render(request, 'customer/customer-form.html', context)
 
 @login_required(login_url='/')
 def customerPage(request, pk):
@@ -125,7 +126,7 @@ def customerPage(request, pk):
     gift_cards = Card.objects.filter(customer = customer)
 
     context = {'customer':customer, 'cards': gift_cards}
-    return render(request, 'base/customer-page.html', context)
+    return render(request, 'customer/customer-page.html', context)
 
 """ User Views"""
 

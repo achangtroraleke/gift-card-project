@@ -73,6 +73,18 @@ class Card(models.Model):
         self.card_num = len(cards_in_business) + 1
 
 
+    def format_to_money(cls, value):
+        rounded_val = round(value,2)
+        str_result = str(rounded_val)
+        split_res = str_result.split('.')
+        if len(split_res[1]) == 1:
+            split_res[1] += '0'
+            output = '.'.join(split_res)
+        return output
+
+
+
+
 class Transaction(models.Model):
      amount = models.FloatField(default=0)
      created = models.DateTimeField(auto_now_add=True)

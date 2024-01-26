@@ -29,7 +29,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-n$1c8f1u#)%$+h5b_by4+hs%vxodu_2guuw)+lx+0%o9)7+8*_'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['gift-card-service.onrender.com', '127.0.0.1']
 

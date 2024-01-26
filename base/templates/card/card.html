@@ -13,7 +13,7 @@
     {% if card.is_active %}
     <a href="{% url 'purchase' card.id %}" class="button">Make Purchase</a>
     {% endif %}
-    <a href="{% url 'refund' card.id %}" class="button">Refund</a>
+    <a href="{% url 'refund' card.id %}" class="button">Issue Refund</a>
     <h3>Transactions</h3>
     <table id="data-table">
       <tr>

@@ -21,9 +21,11 @@
             {% csrf_token %}
             <input type="hidden" name="balance" value="{{card.balance}}">
             {{form}}
-            
-            <input type="submit" value="Confirm" class="button">
-            <a href="{% url 'card-page' card.id %}" class="button">Cancel</a>
+            <div class="flex std-gap">
+                <input type="submit" value="Confirm" class="button">
+                <a href="{% url 'card-page' card.id %}" class="button">Cancel</a>
+            </div>
+
         </form>
         
     </div>
