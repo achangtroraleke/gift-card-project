@@ -1,3 +1,5 @@
+/* General Styles */
+
 :root {
   --main-color: #4e9caf;
   --active-color: #04aa6d;
@@ -12,6 +14,120 @@ body {
   padding: 0px;
   font-family: "Montserrat", sans-serif;
 }
+h3 {
+  font-size: min(2vw, 1.17em);
+}
+
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+form label {
+  font-size: 12px;
+}
+
+#feed {
+  gap: 1rem;
+  width: 100%;
+  text-align: center;
+}
+
+
+.container {
+  width: min(90%, 1000px);
+}
+
+.center {
+  margin: auto;
+}
+
+.flex {
+  display: flex;
+}
+
+.flex-column {
+  display: flex;
+  flex-direction: column;
+}
+.no-margin {
+  margin: 0;
+}
+
+
+.flex-group {
+  gap: 1rem;
+}
+
+.card {
+  box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
+  background: transparent;
+}
+.content {
+  margin: 1rem;
+}
+
+.top-padding {
+  padding-top: 2.5rem;
+}
+
+.red-font {
+  color: var(--inactive-color);
+}
+
+.green-font,
+.success {
+  color: var(--active-color);
+  font-style: italic;
+}
+.errorlist li,
+.error {
+  color: var(--inactive-color);
+  font-style: italic;
+}
+
+
+.half-width {
+  width: 50%;
+  min-width: fit-content;
+}
+
+form div {
+  width: 100%;
+}
+
+input {
+  width: 100%;
+}
+
+
+
+
+.std-gap {
+  gap: 1em;
+}
+
+
+.center {
+  align-items: center;
+}
+
+#intro-text {
+  font-size: 36px;
+  font-weight: 500;
+}
+
+#landing-card {
+  background-image: url("/static/media/landing-img.png");
+  background-repeat: no-repeat;
+  background-size: 30%;
+  background-position: center right;
+  position: relative;
+}
+
+
+/* Table Styles */
 
 table,
 th,
@@ -20,23 +136,15 @@ td {
   text-align: center;
   font-size: min(1.5vw, 12px);
 }
-
-h3{
-  font-size: min(2vw, 1.17em);
-}
 #data-row td {
   padding: 1rem;
 }
-
 
 #data-table {
   width: 100%;
 }
 
-ul {
-  list-style: none;
-  padding: 0;
-}
+
 
 #logo {
   font-weight: 900;
@@ -45,6 +153,8 @@ ul {
 form * {
   width: fit-content;
 }
+
+/* Navbar Styles */
 
 #navbar {
   position: sticky;
@@ -64,7 +174,19 @@ form * {
   gap: 1rem;
   align-items: baseline;
 }
+.nav-link {
+  text-decoration: none;
+  color: white;
+}
+.nav-link:hover {
+  color: lightgray;
+}
 
+.nav-link a h3 {
+  font-size: 24px;
+}
+
+/* Searchbar Styles */
 #search-form {
   align-items: center;
   justify-content: space-between;
@@ -99,48 +221,8 @@ form * {
 #active-checkbox {
   width: 2.5%;
 }
-form label {
-  font-size: 12px;
-}
 
-#feed {
-  gap: 1rem;
-  width: 100%;
-  text-align: center;
-}
-
-.nav-link {
-  text-decoration: none;
-  color: white;
-}
-.nav-link:hover {
-  color: lightgray;
-}
-
-.nav-link a h3 {
-  font-size: 24px;
-}
-
-.container {
-  width: min(90%, 1000px);
-}
-
-.center {
-  margin: auto;
-}
-
-.flex {
-  display: flex;
-}
-
-.flex-column {
-  display: flex;
-  flex-direction: column;
-}
-.no-margin {
-  margin: 0;
-}
-
+/* Button Styles */
 .button {
   background: #4e9caf;
   padding: 10px;
@@ -160,72 +242,26 @@ form label {
   background-color: lightgrey;
   cursor: pointer;
 }
-
-.flex-group {
-  gap: 1rem;
-}
-
-.card {
-  box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
-  background: transparent;
-}
-.content {
-  margin: 1rem;
-}
-
-.top-padding {
-  padding-top: 2.5rem;
-}
-
-.red-font {
-  color: var(--inactive-color);
-}
-
-.green-font,
-.success {
-  color: var(--active-color);
-  font-style: italic;
-}
-.errorlist li,
-.error{
-  color: var(--inactive-color);
-  font-style: italic;
-}
-
 #logoutBtn {
   background: transparent;
   border: none;
   cursor: pointer;
 }
 
-.half-width {
-  width: 50%;
-  min-width: fit-content;
-}
-
-form div {
-  width: 100%;
-}
-
-input {
-  width: 100%;
-}
-
+/* Dashboard */
 .dash-content {
   gap: 1rem;
   flex-wrap: wrap;
   align-items: center;
 }
-
-@media (max-width: 500px){
-  .dash-content{
+@media (max-width: 500px) {
+  .dash-content {
     flex-direction: column;
   }
 }
 
 #business-img {
   width: max(50%, 3vw);
-
 }
 #business-card {
   align-items: center;
@@ -238,10 +274,6 @@ input {
   width: 10rem;
 }
 
-.std-gap {
-  gap: 1em;
-}
-
 #image-container {
   position: relative;
   max-width: 50%;
@@ -251,21 +283,5 @@ input {
   border-radius: 50%;
   aspect-ratio: 1/1;
   width: 50%;
-}
-.center {
-  align-items: center;
-}
-
-#intro-text {
-  font-size: 36px;
-  font-weight: 500;
-}
-
-#landing-card {
-  background-image: url("/static/media/landing-img.png");
-  background-repeat: no-repeat;
-  background-size: 30%;
-  background-position: center right;
-  position: relative;
 }
 
