@@ -15,22 +15,22 @@
     
     <li id="nav-group" class="flex">
         <a href="{% url 'dashboard'%}" class="nav-link">
-            <h3>Businesses</h3>
+            <h4>Businesses</h4>
         </a>
-        <a href="{% url 'profile' %}" class="nav-link"><h3 >{{user.username}}</h3></a>
+        <a href="{% url 'profile' %}" class="nav-link"><h4 >{{user.username}}</h4></a>
         
         <form id="logout-form" action="/logout/" method="POST" class="">
             {% csrf_token %}
-            <button id="logoutBtn" class="nav-link" type="submit" value="Logout"><h3>Logout</h3></button>
+            <button id="logoutBtn" class="nav-link" type="submit" value="Logout"><h4>Logout</h4></button>
         </form>
     </li>
     {% else %}
     <li id="nav-group" class="flex">
         <a href="{% url 'login'%}" class="nav-link">
-            <h3>Login</h3>
+            <h4>Login</h4>
         </a>
         <a href="{% url 'register'%}" class="nav-link">
-            <h3>Sign Up</h3>
+            <h4>Sign Up</h4>
         </a>
     </li> 
     {% endif %}

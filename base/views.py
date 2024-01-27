@@ -98,7 +98,7 @@ def refundPage(request, pk):
                 new_transaction = Transaction(amount = amt, gift_card=card, trans_type="refund")
                 card.save()
                 new_transaction.save()
-              
+             
                 return redirect(f'/gift-card/{pk}/')
         else:
             formatted_balance = card.format_to_money(card.original_balance)

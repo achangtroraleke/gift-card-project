@@ -80,6 +80,7 @@ class Card(models.Model):
         if len(split_res[1]) == 1:
             split_res[1] += '0'
             output = '.'.join(split_res)
+
         return output
 
 
@@ -94,12 +95,5 @@ class Transaction(models.Model):
      def __str__(self):
         return f'Transaction #{self.id}'
      
-    #  def send_receipt(self):
-    #     send_mail(
-    #         f"{self.trans_type.title()} RECEIPT #{self.id} DATE: {self.created} {self.trans_type}",
-    #         f"Your {self.trans_type} for ${self.amount} was processed.",
-    #         "atachart.changtroraleke@gmail.com",
-    #         ["atachart.changtroraleke@gmail.com"],
-    #         fail_silently=False,
-    #     )
+
 

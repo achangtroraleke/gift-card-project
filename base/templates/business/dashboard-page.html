@@ -13,16 +13,16 @@
                 <button class="button">Register New Customer</button>
             </a>
         </div>
-        <h3>Your Businesses</h3>
+        <h2>Your Businesses</h2>
         <div class="dash-content flex">
             
             {% for business in businesses %}
             <a class="business-link" href="{% url 'get-business-cards' business.id %}">
                 <div class="card thumbnail">
-                    <div id="business-card" class="content flex-column">
-                        <h5>Business Name: {{business}}</h5>
+                    <div id="business-card" class="content flex-column std-gap ">
+                        <h5 class="no-margin">Business Name: {{business}}</h5>
                         <img id="business-img" src="{{business.bus_img.url}}" alt="business-logo">
-                        <h5>Outstanding Gift Cards: ${{business.gc_total_bal | floatformat:2}}</h5>
+                        <h5 class="no-margin">Outstanding Gift Cards: ${{business.gc_total_bal | floatformat:2}}</h5>
                      
                     </div>
                 </div>
