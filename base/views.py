@@ -218,7 +218,7 @@ def editBusinessPage(request, pk):
         if form.is_valid():
             edit_business = form.save(commit=False)
             new_img=form.cleaned_data['business_image']
-            edit_business.bus_img = new_img
+            # edit_business.bus_img = new_img
             edit_business.owner = request.user
             edit_business.save()
             return redirect('get-business-cards', pk=sel_business.id)
