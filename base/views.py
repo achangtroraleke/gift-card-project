@@ -217,7 +217,7 @@ def editBusinessPage(request, pk):
         form = NewBusinessForm(request.POST,request.FILES, instance = sel_business)
         if form.is_valid():
             edit_business = form.save(commit=False)
-            new_img=form.cleaned_data['business_image']
+            # new_img=form.cleaned_data['business_image']
             # edit_business.bus_img = new_img
             edit_business.owner = request.user
             edit_business.save()
