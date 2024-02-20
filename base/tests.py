@@ -1,5 +1,5 @@
 from django.test import TestCase
-from .models import MyCustomUser, Customer, Card, Business
+from .models import MyCustomUser, Customer, Card, Business, Transaction
 
 # Create your tests here.
 
@@ -53,3 +53,23 @@ class CardTestCase(TestCase):
 
     
 
+class BusinessTestCase(TestCase):
+    def setUp(self):
+        test_profile = MyCustomUser.objects.create(name='user', email='user@gmail.com', password='test')
+        Business.objects.create(id=1, name='test_bus', owner=test_profile)
+
+    def test_business_created(self):
+        test_bus = Business.objects.get(id=1)
+        self.assertEqual(test_bus.name, 'test_bus')
+
+class TransactionTestCase(TestCase):
+    def setUp(self):
+        test_profile = MyCustomUser.objects.create(name='user', email='user@gmail.com', password='test')
+        test_bus = Business.objects.create(name='test_bus', owner=test_profile)
+        test_customer = Customer.objects.create(first_name='test', last_name='customer', created_by=test_profile)
+        test_card = Card.objects.create(id=1, original_balance=100, balance=100, customer=test_customer, business=test_bus)
+        Transaction.objects.create(id=1, amount=50, gift_card=test_card, trans_type='purchase')
+
+    def test_transaction_created(self):
+        test_transaction = Transaction.objects.get(id=1)
+        self.assertEqual(test_transaction.trans_type,'purchase')

@@ -11,7 +11,8 @@ I chose Django for its built-in authentication and its html templates. Since the
 The system is not as simple as a spreadsheet that keeps track of outstanding amounts. Within the application’s interface, the user can record the gift card they issued at the time of purchase, by registering the customer who purchased it and the amount that was credited into the card. On redemption, the user can search the card by id or customer name, in case there are many outstanding gift cards in the database. Cards can only be redeemed or refunded based on the amount on the card. At the time of redemption or refund, a record of that action is added into the database, where a user can see the card’s activities. These records are useful to see trends of usage or prevent fraudulent claims by customers or employees. 
 
 ##How to run:
--Create a virtual enviorment and pip install requirements.txt
+-Create a virtual enviroment and pip install requirements.txt
+-Activate virtual enviroment
 -Set DEBUG to True in settings.py
 -Run python manage.py makemigrations in the command line
 -Run python manage.py migrate in the command line
@@ -19,3 +20,6 @@ The system is not as simple as a spreadsheet that keeps track of outstanding amo
 
 ##Database Schema
 ![schema image ](/schema.jpg)
+
+##Testing
+-To test run python manage.py test
